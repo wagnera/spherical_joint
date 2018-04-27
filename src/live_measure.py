@@ -6,6 +6,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from sklearn.externals import joblib
 from geometry_msgs.msg import TransformStamped
 import tf2_ros
+from tf.transformations import quaternion_from_euler as eul2quat
 
 class spherical_measure:
 	def __init__(self):
@@ -41,7 +42,7 @@ class spherical_measure:
 				t.header.stamp = rospy.Time.now()
 				t.header.frame_id='base_link'
 				t.child_frame_id='cup'
-				q=eul2quat(math.radians(theta_1),math.radians(theta_2),0)
+				q=eul2quat(math.radians(-theta_1),math.radians(theta_2),0)
 				t.transform.rotation.x=q[0]
 				t.transform.rotation.y=q[1]
 				t.transform.rotation.z=q[2]
