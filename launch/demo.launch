@@ -1,0 +1,11 @@
+<launch>
+  <!-- upload urdf -->
+  <param name="robot_description" textfile="$(find spherical_joint)/models/spherical.urdf" />
+
+  <!-- robot state publisher -->
+  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" />
+  <node pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map base_link 10" name="maptf"/> 
+  <!--node pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link cup 10" name="cuptf"/--> 
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find spherical_joint)/config/spherical.rviz"/>
+  <!--node pkg="spherical_joint" type="live_measure.py" name="measurement"/-->
+</launch>

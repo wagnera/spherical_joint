@@ -14,6 +14,7 @@ class spherical_calibration:
 		rospy.on_shutdown(self.plot)
 		self.ser=serial.Serial('/dev/ttyACM0',115200)
 		self.file=open('datalog.csv','w')
+		self.data_count=0
 
 	def tag_callback(self,data):
 		ids=map(lambda x: x.id, data.markers) #get foudn ids
@@ -31,7 +32,8 @@ class spherical_calibration:
 			self.s2.append(self.curr_s2)
 			self.s3.append(self.curr_s3)
 			self.s4.append(self.curr_s4)
-			print(t11,t22,t33,self.curr_s1,self.curr_s2,self.curr_s3,self.curr_s4)
+			self.data_count += 1
+			print(self.data_count,t11,t22,t33,self.curr_s1,self.curr_s2,self.curr_s3,self.curr_s4)
 			self.file.write(str(t11)+','+str(t22)+','+str(t33)+','+str(self.curr_s1)+','+str(self.curr_s2)+','+str(self.curr_s3)+','+str(self.curr_s4)+'\n')
 
 	def plot(self):
