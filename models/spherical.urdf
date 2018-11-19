@@ -2,7 +2,8 @@
 <robot name="sperical_joint">
   <link name="base_link">
     <visual>
-      <origin rpy="0 0 0" xyz="-0.254 0 0"/>
+    <!--origin rpy="0 0 0" xyz="-0.254 0 0"/-->
+      <origin rpy="3.14 0 0" xyz="-0.254 0 0"/>
       <geometry>
         <mesh filename="package://spherical_joint/models/spherical_ball.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -17,7 +18,8 @@
 
   <link name="cup">
     <visual>
-      <origin rpy="-1.57 0 0" xyz="0 -0.284 0.142"/>
+      <!--origin rpy="-1.57 0 0" xyz="0 -0.284 0.142"/-->
+      <origin rpy="1.57 0 0" xyz="0 0.284 -0.142"/>
       <geometry>
         <mesh filename="package://spherical_joint/models/spherical_cup.stl" scale="0.001 0.001 0.001"/>
       </geometry>
